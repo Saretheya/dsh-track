@@ -1,0 +1,71 @@
+{
+  "name": "dsh-trace",
+  "version": "1.0.0",
+  "description": "Survive context compaction (published as dsh-trace; same body as dsh-cairn): the model writes a checkpoint, the plugin re-injects it into the system prompt after every compaction. Checkpoints live in the plugin's own folder — nothing is ever written into your workspace. Also published as dsh-flashback / dsh-ctx / dsh-trace (same body; only the highest-priority installed variant stays active).",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./package.json": {
+      "default": "./package.json"
+    }
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "catalog": {
+      "category": "workflow",
+      "summary": {
+        "en": "Keep a task's state across context compaction: the model writes a checkpoint, and the plugin re-injects it into the system prompt after every compaction, so conclusions survive repeated summarisation. Checkpoints stay in the plugin's own folder, never in your workspace.",
+        "zh": "让任务状态熬过上下文压缩：模型写入检查点，插件在每次压缩后把它重新注入系统提示词，结论不会被一轮轮摘要冲掉。检查点存在插件自有目录，绝不写入你的工作区。"
+      },
+      "capabilities": [
+        "context-checkpoint",
+        "compaction-survival",
+        "session-continuity",
+        "cross-session-recall",
+        "model-tools"
+      ]
+    }
+  },
+  "files": [
+    "lib/",
+    "skill/",
+    "cordis.patch.yml",
+    "README.md",
+    "README.en.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "cordis-plugin",
+    "context",
+    "compaction",
+    "checkpoint",
+    "context-window",
+    "resume",
+    "continuity",
+    "memory"
+  ],
+  "peerDependencies": {
+    "@deepseek-ai/cordis": ">=4.0.1 <5"
+  },
+  "engines": {
+    "node": "^22.19.0 || >=24.0.0"
+  },
+  "license": "MIT",
+  "author": "Saretheya",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Saretheya/dsh-trace.git"
+  },
+  "homepage": "https://github.com/Saretheya/dsh-trace#readme",
+  "bugs": {
+    "url": "https://github.com/Saretheya/dsh-trace/issues"
+  }
+}
