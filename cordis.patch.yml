@@ -1,4 +1,4 @@
-# dsh-trace — bundle patch layer.
+# dsh-track — bundle patch layer.
 #
 # This is the plugin's own composition entry: dsh-app-boot walks the profile's
 # `dsh.profile.bundles` in order and stacks each bundle's `dsh.bundle.patch` into the
@@ -6,9 +6,9 @@
 # package removes the row with it — no leftover insert lines to clean up by hand.
 #
 # NOTE: this plugin ships under four names (dsh-cairn / dsh-flashback / dsh-ctx /
-# dsh-trace) sharing one body. Only ONE row here. The runtime arbiter in
+# dsh-track) sharing one body. Only ONE row here. The runtime arbiter in
 # lib/variant.js decides which loaded variant actually activates
-# (dsh-cairn > dsh-flashback > dsh-ctx > dsh-trace); the rest go dormant silently.
+# (dsh-cairn > dsh-flashback > dsh-ctx > dsh-track); the rest go dormant silently.
 - insert:
     - id: trace
-      name: 'dsh-trace'
+      name: 'dsh-track'
