@@ -1,7 +1,7 @@
 {
   "name": "dsh-track",
-  "version": "1.0.0",
-  "description": "Survive context compaction (published as dsh-track; same body as dsh-cairn): the model writes a checkpoint, the plugin re-injects it into the system prompt after every compaction. Checkpoints live in the plugin's own folder — nothing is ever written into your workspace. Also published as dsh-flashback / dsh-ctx / dsh-track (same body; only the highest-priority installed variant stays active).",
+  "version": "1.0.1",
+  "description": "Keep a task's state across context compaction for DeepSeek Harness: the model writes a checkpoint and the plugin re-injects it into the system prompt after every compaction. Checkpoints stay in the plugin's own folder, never in your workspace.",
   "type": "module",
   "main": "lib/index.js",
   "exports": {
