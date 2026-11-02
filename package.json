@@ -1,7 +1,7 @@
 {
-  "name": "dsh-trace",
+  "name": "dsh-track",
   "version": "1.0.0",
-  "description": "Survive context compaction (published as dsh-trace; same body as dsh-cairn): the model writes a checkpoint, the plugin re-injects it into the system prompt after every compaction. Checkpoints live in the plugin's own folder — nothing is ever written into your workspace. Also published as dsh-flashback / dsh-ctx / dsh-trace (same body; only the highest-priority installed variant stays active).",
+  "description": "Survive context compaction (published as dsh-track; same body as dsh-cairn): the model writes a checkpoint, the plugin re-injects it into the system prompt after every compaction. Checkpoints live in the plugin's own folder — nothing is ever written into your workspace. Also published as dsh-flashback / dsh-ctx / dsh-track (same body; only the highest-priority installed variant stays active).",
   "type": "module",
   "main": "lib/index.js",
   "exports": {
@@ -62,10 +62,10 @@
   "author": "Saretheya",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Saretheya/dsh-trace.git"
+    "url": "git+https://github.com/Saretheya/dsh-track.git"
   },
-  "homepage": "https://github.com/Saretheya/dsh-trace#readme",
+  "homepage": "https://github.com/Saretheya/dsh-track#readme",
   "bugs": {
-    "url": "https://github.com/Saretheya/dsh-trace/issues"
+    "url": "https://github.com/Saretheya/dsh-track/issues"
   }
 }
