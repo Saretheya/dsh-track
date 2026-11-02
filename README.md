@@ -1,6 +1,6 @@
 <div align="center">
 
-# dsh-trace
+# dsh-track
 
 **压缩冲走的，路标替你记住。**
 
@@ -9,7 +9,7 @@
 [![platform-desktop](https://img.shields.io/badge/platform-desktop%20%2B%20web-blue)](#安装)
 [![license](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![dsh](https://img.shields.io/badge/DSH-0.2.x-blue)](https://github.com/deepseek-ai/deepseek-harness)
-[![npm downloads](https://img.shields.io/npm/dt/dsh-trace.svg?label=downloads)](https://www.npmjs.com/package/dsh-trace)
+[![npm downloads](https://img.shields.io/npm/dt/dsh-track.svg?label=downloads)](https://www.npmjs.com/package/dsh-track)
 
 </div>
 
@@ -121,7 +121,7 @@
 ## 安装
 
 ```bash
-dsh plugin --profile desktop add dsh-trace
+dsh plugin --profile desktop add dsh-track
 ```
 
 装好**重启 DSH** 即可。
@@ -136,7 +136,7 @@ dsh plugin --profile desktop add dsh-trace
 **全部在插件自己的目录里，你的工作区一个文件都不会多。**
 
 ```
-<DSH_HOME>/plugins/dsh-trace/data/
+<DSH_HOME>/plugins/dsh-track/data/
 ├── checkpoints/<工作区标识>/
 │   ├── current.md          当前活跃副本
 │   ├── current.meta.json   代际/时间/主题/关键词
