@@ -1,6 +1,6 @@
 <div align="center">
 
-# dsh-trace
+# dsh-cairn
 
 **What compaction washes away, a cairn remembers for you.**
 
@@ -78,6 +78,59 @@ exposes a compaction service. Where that service is not on the plugin's plane
 
 ---
 
+## When to write a checkpoint: the plugin prompts you
+
+**This is not a "wait for the model to remember" plugin.** Beyond stating the rule
+in the prompt, it actively intervenes at **four moments**:
+
+### 1. Usage-crossing notices (injected automatically — the most direct one)
+
+The plugin measures real usage every step and, when you cross a tier, **injects a
+notice into the session** (once per tier, so it never nags):
+
+| Tier | Threshold | Injected notice |
+|---|---|---|
+| `warm` | usage ≥ **50%** of the window | "Past halfway. **First** call `checkpoint_write`, then `context_compact`" |
+| `near` | usage ≥ **80%** | "Approaching the limit. **Update the checkpoint now**" |
+| `over` | usage ≥ **90%** | "Past the safe line. **Update it immediately**" |
+
+The notice is **pushed to the model by the plugin** — the model does not have to
+remember to write.
+
+### 2. A standing prompt section (present in every turn)
+
+As soon as the session has a checkpoint, a rule section stays in the system prompt:
+
+> - This section is the authoritative copy **for this session**; when it conflicts
+>   with the project's docs, this section wins — but the repo always wins over both.
+> - Order: when context is tight, call `checkpoint_write` **first**, then `context_compact`.
+
+The model does not need to "remember" the convention — it reads it every turn.
+
+### 3. A bundled skill (declarative triggers)
+
+The package ships a `context-checkpoint` skill that names four trigger classes:
+
+| Trigger | Meaning |
+|---|---|
+| **Explicit pressure signal** | The system or user says context is nearly gone (**highest confidence**) |
+| **Milestone** | Root cause found / plan settled / module finished / tests pass / user confirms a decision |
+| **Post-compaction reconciliation** | A new `<compacted-summary>` is observed for the first time |
+| **Emergency recovery** | An overflow-style error has already surfaced |
+
+### 4. A wake-up message after compaction
+
+Once compaction finishes, the plugin injects a follow-up telling the model
+"the checkpoint is on disk, history was compacted — **carry on from where you were,
+do not restate finished work**", so it does not start over from scratch.
+
+> **What still needs a human touch**: if a task is purely incremental and never
+> reaches 50% nor compacts, none of these notices fire. For those, add a
+> **milestone rule** to `AGENTS.md` (e.g. "call `checkpoint_write` after each
+> module") so it becomes a fixed habit.
+
+---
+
 ## Install
 
 ```bash
@@ -148,8 +201,9 @@ Nothing has to be edited by hand. The knobs:
 
 ## Known limitations
 
-- **The model has to write checkpoints.** Nothing is summarised automatically.
-  To make it habitual, add a line to `AGENTS.md` or project memory such as
+- **It does not summarise your conversation.** The plugin picks the moment and
+  stores what it is given; *what* to write is the model's judgement. To make it a
+  fixed habit at project milestones, add a line to `AGENTS.md` such as
   "call `checkpoint_write` at milestones".
 - **Cross-session relevance is keyword-level**, not semantic embedding. Errors are
   biased conservatively: a one-line pointer (you go read it) rather than full text
