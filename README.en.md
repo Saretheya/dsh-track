@@ -1,6 +1,6 @@
 <div align="center">
 
-# dsh-trace
+# dsh-track
 
 **What compaction washes away, a cairn remembers for you.**
 
@@ -9,7 +9,7 @@
 [![platform-desktop](https://img.shields.io/badge/platform-desktop%20%2B%20web-blue)](#install)
 [![license](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![dsh](https://img.shields.io/badge/DSH-0.2.x-blue)](https://github.com/deepseek-ai/deepseek-harness)
-[![npm downloads](https://img.shields.io/npm/dt/dsh-trace.svg?label=downloads)](https://www.npmjs.com/package/dsh-trace)
+[![npm downloads](https://img.shields.io/npm/dt/dsh-track.svg?label=downloads)](https://www.npmjs.com/package/dsh-track)
 
 </div>
 
@@ -134,7 +134,7 @@ do not restate finished work**", so it does not start over from scratch.
 ## Install
 
 ```bash
-dsh plugin --profile desktop add dsh-trace
+dsh plugin --profile desktop add dsh-track
 ```
 
 Restart DSH afterwards.
@@ -149,7 +149,7 @@ Restart DSH afterwards.
 **Entirely inside the plugin's own folder. Not one file lands in your workspace.**
 
 ```
-<DSH_HOME>/plugins/dsh-trace/data/
+<DSH_HOME>/plugins/dsh-track/data/
 ├── checkpoints/<workspace-id>/
 │   ├── current.md          the live copy
 │   ├── current.meta.json   generation / timestamps / topic / keywords
