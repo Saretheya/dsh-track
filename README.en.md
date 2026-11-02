@@ -1,6 +1,6 @@
 <div align="center">
 
-# dsh-cairn
+# dsh-trace
 
 **What compaction washes away, a cairn remembers for you.**
 
@@ -74,7 +74,7 @@ are actually continuing the same work.
 
 There is also `context_compact`, which asks for a compaction when the host
 exposes a compaction service. Where that service is not on the plugin's plane
-(common), it only records the checkpoint and says so plainly instead of pretending.
+(which is common), it only records the checkpoint and says so plainly instead of pretending.
 
 ---
 
@@ -211,7 +211,7 @@ Nothing has to be edited by hand. The knobs:
 - **Proactive compaction may be unavailable.** Depending on your composition the
   plugin may not see a compaction service; it then only stores and re-injects
   (the core capability is unaffected), and DSH's own auto-compaction still runs.
-- **The variant mutex is process-level plus a file lock.** One active variant per
+- **One instance per data folder.** The plugin arbitrates with a lock file under
   `data/` folder; if two DSH instances point at the same plugin folder, the later
   one goes dormant.
 
